@@ -1,8 +1,10 @@
-import 'package:count_me_in/screens/login.dart';
 import 'package:flutter/material.dart';
+
 import 'screens/home.dart';
+import 'screens/logReg.dart';
 import 'screens/login.dart';
 import 'screens/qrscan.dart';
+import 'screens/register.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,11 +17,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/home',
+      initialRoute: '/logReg',
       routes: {
-        '/login': (context) => LogRegister(),
+        '/logReg': (context) => LogRegister(),
+        '/login': (context) => LoginScreen(),
+        '/register': (context) => RegistrationScreen(),
         '/home': (context) => HomeScreen(),
-        '/qr' : (context) => QR()
+        '/qr': (context) => QR()
       },
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -34,7 +38,6 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-
     );
   }
 }

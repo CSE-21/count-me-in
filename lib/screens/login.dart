@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 
-class LogRegister extends StatefulWidget {
-  const LogRegister({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<LogRegister> createState() => _LogRegisterState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LogRegisterState extends State<LogRegister> {
+class _LoginScreenState extends State<LoginScreen> {
+  var username = "";
+  var password = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,45 +18,86 @@ class _LogRegisterState extends State<LogRegister> {
         title: Text("Count Me In"),
         centerTitle: true,
       ),
-      body: Container(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Center(
-              child: Container(
-                width: 220,
-                height: 60,
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Text("Login"),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blueAccent,
-                    textStyle: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  ),
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: ListView(
+          children: <Widget>[
+            // Container(
+            //     alignment: Alignment.center,
+            //     padding: const EdgeInsets.all(10),
+            //     child: const Text(
+            //       'TutorialKart',
+            //       style: TextStyle(
+            //           color: Colors.blue,
+            //           fontWeight: FontWeight.w500,
+            //           fontSize: 30),
+            //     )),
+            Container(
+                alignment: Alignment.center,
+                padding: const EdgeInsets.all(10),
+                child: const Text(
+                  'Sign in',
+                  style: TextStyle(fontSize: 20),
+                )),
+            Container(
+              padding: const EdgeInsets.all(10),
+              child: TextField(
+                onChanged: (value) {
+                  username = value;
+                },
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'User Name',
                 ),
               ),
             ),
+            Container(
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+              child: TextField(
+                onChanged: (value) {
+                  password = value;
+                },
+                obscureText: true,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                ),
+              ),
+            ),
+            // TextButton(
+            //   onPressed: () {
+            //     //forgot password screen
+            //   },
+            //   child: const Text(
+            //     'Forgot Password?',
+            //   ),
+            // ),
             SizedBox(
               height: 20,
             ),
             Container(
-              width: 220,
-              height: 60,
+              height: 50,
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: ElevatedButton(
+                child: const Text('Login'),
                 onPressed: () {},
-                child: Text("Register"),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
-                  textStyle: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20),
-                ),
               ),
+            ),
+            Row(
+              children: <Widget>[
+                const Text('Do not have an account?'),
+                TextButton(
+                  child: const Text(
+                    'Sign up',
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  onPressed: () {
+                    //signup screen
+                    Navigator.pushNamed(context, "/register");
+                  },
+                )
+              ],
+              mainAxisAlignment: MainAxisAlignment.center,
             ),
           ],
         ),
