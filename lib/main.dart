@@ -1,5 +1,4 @@
 import 'package:count_me_in/screens/profPanel.dart';
-import 'package:count_me_in/screens/qrgen.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/home.dart';
@@ -33,7 +32,6 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomeScreen(),
         '/qr': (context) => QR(),
         '/profPanel': (context)=>ProfPanel(),
-        '/qrgen': (context)=>qrgen(),
       },
       title: 'Flutter Demo',
       theme: ThemeData(
