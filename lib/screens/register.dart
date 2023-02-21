@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   var _username = "";
   var _password = "";
-  var _emailid = "";
+  var _email = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,6 +22,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       body: Container(
         child: Column(
           children: [
+            SizedBox(
+              height: 30,
+            ),
             Text(
               "Create Account",
               style: TextStyle(fontSize: 20),
@@ -46,7 +50,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               padding: const EdgeInsets.all(10),
               child: TextField(
                 onChanged: (value) {
-                  _emailid = value;
+                  _email = value;
                 },
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -83,8 +87,23 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               height: 50,
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: ElevatedButton(
-                child: const Text('Login'),
-                onPressed: () {},
+                child: const Text('Register'),
+                onPressed: () async {
+                  try {
+                    await Supabase.instance.client.auth.signUp(
+                      email: _email,
+                      password: _password,
+                    );
+                    Navigator.pushNamed(context, "/home");
+                  } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Signup failed'),
+                        backgroundColor: Colors.red,
+                      ),
+                    );
+                  }
+                },
               ),
             ),
           ],

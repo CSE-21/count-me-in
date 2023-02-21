@@ -16,6 +16,7 @@ class _QRState extends State<QR> {
       final String code = barcodeCapture.barcodes[0].rawValue ?? "---";
       debugPrint('Barcode found! $code');
       _screenOpened = true;
+
       Navigator.pop(context);
     }
   }

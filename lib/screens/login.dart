@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -8,7 +9,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  var _username = "";
+  var _email = "";
   var _password = "";
 
   @override
@@ -43,11 +44,12 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.all(10),
               child: TextField(
                 onChanged: (value) {
-                  _username = value;
+                  _email = value;
                 },
+                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'User Name',
+                  labelText: 'Email Address',
                 ),
               ),
             ),
@@ -80,7 +82,22 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               child: ElevatedButton(
                 child: const Text('Login'),
-                onPressed: () {},
+                onPressed: () async {
+                  try {
+                    await Supabase.instance.client.auth.signUp(
+                      email: _email,
+                      password: _password,
+                    );
+                    Navigator.pushNamed(context, "/home");
+                  } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Signup failed'),
+                        backgroundColor: Colors.red,
+                      ),
+                    );
+                  }
+                },
               ),
             ),
             Row(
