@@ -35,8 +35,8 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomeScreen(),
         '/qr': (context) => QR(),
         '/profPanel': (context) => ProfPanel(),
-        'success':(context) => Success(),
-        'failure': (context)=> Failure(),
+        '/success': (context) => Success(),
+        '/failure': (context) => Failure(),
       },
       title: '',
       theme: ThemeData(
