@@ -24,8 +24,7 @@ class _QRState extends State<QR> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
-        backgroundColor: Color(0xff300757),
-        title: Text('Pay by QR'),
+        title: Text('Scan QR'),
       ) ,
       body:Container(
         decoration: const BoxDecoration(
