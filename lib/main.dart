@@ -2,6 +2,7 @@ import 'package:count_me_in/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'screens/home.dart';
 import 'screens/login.dart';
+import 'screens/qrscan.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => LogRegister(),
         '/home': (context) => HomeScreen(),
-        '/qr' : (context) => HomeScreen()
+        '/qr' : (context) => QR()
       },
       title: 'Flutter Demo',
       theme: ThemeData(
