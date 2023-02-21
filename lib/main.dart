@@ -1,4 +1,6 @@
 import 'package:count_me_in/screens/profPanel.dart';
+import 'package:count_me_in/screens/status/failure.dart';
+import 'package:count_me_in/screens/status/success.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -33,6 +35,8 @@ class MyApp extends StatelessWidget {
         '/home': (context) => HomeScreen(),
         '/qr': (context) => QR(),
         '/profPanel': (context) => ProfPanel(),
+        'success':(context) => Success(),
+        'failure': (context)=> Failure(),
       },
       title: '',
       theme: ThemeData(
