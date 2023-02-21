@@ -21,7 +21,8 @@ class _QRState extends State<QR> {
       final data = await supabase.from('QR code').select('code').eq('id', 1);
       print(data);
       print(code);
-      if (data[0].code == code) {
+      print(data[0]['code']);
+      if (data[0]['code'] == code) {
         Navigator.pushNamed(context, '/success');
       } else {
         Navigator.pushNamed(context, '/failure');
