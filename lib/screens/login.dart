@@ -8,8 +8,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  var username = "";
-  var password = "";
+  var _username = "";
+  var _password = "";
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.all(10),
               child: TextField(
                 onChanged: (value) {
-                  username = value;
+                  _username = value;
                 },
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
@@ -55,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
               child: TextField(
                 onChanged: (value) {
-                  password = value;
+                  _password = value;
                 },
                 obscureText: true,
                 decoration: const InputDecoration(

@@ -46,7 +46,9 @@ class _LogRegisterState extends State<LogRegister> {
               width: 220,
               height: 60,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, "/register");
+                },
                 child: Text("Register"),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blueAccent,

@@ -1,18 +1,19 @@
 import 'package:count_me_in/screens/profPanel.dart';
 import 'package:count_me_in/screens/qrgen.dart';
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'screens/home.dart';
 import 'screens/logReg.dart';
 import 'screens/login.dart';
 import 'screens/qrscan.dart';
 import 'screens/register.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
   await Supabase.initialize(
     url: 'https://fglvdaywknlafogfwewm.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnbHZkYXl3a25sYWZvZ2Z3ZXdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzcwMDY1MjksImV4cCI6MTk5MjU4MjUyOX0.Q4ePoigtKqXT95M0acZBEE_PDHTQOBnFBYEbh_cy-v8',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZnbHZkYXl3a25sYWZvZ2Z3ZXdtIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzcwMDY1MjksImV4cCI6MTk5MjU4MjUyOX0.Q4ePoigtKqXT95M0acZBEE_PDHTQOBnFBYEbh_cy-v8',
   );
 
   runApp(MyApp());
@@ -32,10 +33,10 @@ class MyApp extends StatelessWidget {
         '/register': (context) => RegistrationScreen(),
         '/home': (context) => HomeScreen(),
         '/qr': (context) => QR(),
-        '/profPanel': (context)=>ProfPanel(),
-        '/qrgen': (context)=>qrgen(),
+        '/profPanel': (context) => ProfPanel(),
+        '/qrgen': (context) => qrgen(),
       },
-      title: 'Flutter Demo',
+      title: '',
       theme: ThemeData(
         // This is the theme of your application.
         //
