@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter/material.dart';
 
 class Failure extends StatefulWidget {
@@ -10,6 +10,7 @@ class Failure extends StatefulWidget {
 }
 
 class _SuccessState extends State<Failure> {
+  final supabase = Supabase.instance.client;
   startTime() async{
     var duration = new Duration(seconds: 6);
     return new Timer(duration, redirect);
@@ -19,7 +20,10 @@ class _SuccessState extends State<Failure> {
   }
 
   @override
-  void InitState(){
+  void InitState() async{
+    await supabase
+        .from('Attendance')
+        .insert({'student_id': 12141680, 'Present':0});
     startTime();
   }
   @override
@@ -27,8 +31,8 @@ class _SuccessState extends State<Failure> {
     return Scaffold(
       body: Column(
         children: [
-          Icon(Icons.check),
-          Text('Your attendance is Marked')
+          Icon(Icons.reddit),
+          Text('Wrong QR')
         ],
       ),
     );

@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:flutter/material.dart';
 
 class Success extends StatefulWidget {
@@ -10,6 +10,7 @@ class Success extends StatefulWidget {
 }
 
 class _SuccessState extends State<Success> {
+  final supabase = Supabase.instance.client;
   startTime() async{
     var duration = new Duration(seconds: 6);
     return new Timer(duration, redirect);
@@ -19,7 +20,10 @@ class _SuccessState extends State<Success> {
   }
 
   @override
-  void InitState(){
+  void InitState() async{
+    await supabase
+        .from('Attendance')
+        .insert({'student_id': 12141680, 'Present':1});
     startTime();
   }
   @override
