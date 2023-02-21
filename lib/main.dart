@@ -1,5 +1,6 @@
+import 'package:count_me_in/screens/login.dart';
 import 'package:flutter/material.dart';
-
+import 'screens/home.dart';
 import 'screens/login.dart';
 
 void main() {
@@ -13,6 +14,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => LogRegister(),
+        '/home': (context) => HomeScreen(),
+        '/qr' : (context) => HomeScreen()
+      },
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -26,7 +33,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const LogRegister(),
+
     );
   }
 }
