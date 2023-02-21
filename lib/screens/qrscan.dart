@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class QR extends StatefulWidget {
   const QR({Key? key}) : super(key: key);
@@ -9,15 +10,24 @@ class QR extends StatefulWidget {
 }
 
 class _QRState extends State<QR> {
+  final supabase = Supabase.instance.client;
   bool _screenOpened = false;
   MobileScannerController cameraController = MobileScannerController();
-  void _detectedQR(BarcodeCapture barcodeCapture) {
+  void _detectedQR(BarcodeCapture barcodeCapture) async{
     if (!_screenOpened) {
       final String code = barcodeCapture.barcodes[0].rawValue ?? "---";
       debugPrint('Barcode found! $code');
       _screenOpened = true;
-
-      Navigator.pop(context);
+      final data = await supabase
+          .from('QR code')
+          .select('code')
+          .eq('id',1);
+      if (data == code){
+        Navigator.pushNamed(context, '/success');
+      }
+      else{
+        Navigator.pushNamed(context, '/fail');
+      }
     }
   }
 
