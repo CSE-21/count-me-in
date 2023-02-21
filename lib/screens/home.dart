@@ -17,8 +17,8 @@ class _HomeScreenState extends State<HomeScreen> {
           Text('Hey!'),
           SizedBox(height: 15,),
           ElevatedButton(onPressed: (){
-            Navigator.pushNamed(context, 'qr');
-          }, child: Text('MArk Attendance'))
+            Navigator.pushNamed(context, '/qr');
+          }, child: Text('Mark Attendance'))
         ],
       ),
     );

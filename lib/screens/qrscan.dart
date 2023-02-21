@@ -11,9 +11,9 @@ class QR extends StatefulWidget {
 class _QRState extends State<QR> {
   bool _screenOpened = false;
   MobileScannerController cameraController = MobileScannerController();
-  void _detectedQR(barcode, args) {
+  void _detectedQR(BarcodeCapture barcodeCapture) {
     if (!_screenOpened) {
-      final String code = barcode.rawValue ?? "---";
+      final String code = barcodeCapture.barcodes[0].rawValue ?? "---";
       debugPrint('Barcode found! $code');
       _screenOpened = true;
       Navigator.pop(context);
