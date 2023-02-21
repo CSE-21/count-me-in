@@ -12,6 +12,13 @@ class _LoginScreenState extends State<LoginScreen> {
   var _email = "";
   var _password = "";
 
+  Future<void> signIn(String email, String password) async {
+    final response = await Supabase.instance.client.auth
+        .signInWithPassword(email: email, password: password);
+    final Session? session = response.session;
+    final User? user = response.user;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,19 +91,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: const Text('Login'),
                 onPressed: () async {
                   try {
-                    await Supabase.instance.client.auth.signUp(
-                      email: _email,
-                      password: _password,
-                    );
+                    await signIn(_email, _password);
                     Navigator.pushNamed(context, "/home");
                   } catch (e) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Signup failed'),
-                        backgroundColor: Colors.red,
-                      ),
-                    );
+                    print(e);
                   }
+                  ;
                 },
               ),
             ),

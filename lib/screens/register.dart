@@ -52,6 +52,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 onChanged: (value) {
                   _email = value;
                 },
+                keyboardType: TextInputType.emailAddress,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Enter your Email Address',
@@ -96,6 +97,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     );
                     Navigator.pushNamed(context, "/home");
                   } catch (e) {
+                    print(e);
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Signup failed'),
