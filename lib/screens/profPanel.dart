@@ -96,6 +96,11 @@ class _ProfPanelState extends State<ProfPanel> {
                   _regenerate();
                 },
                 child: Text('Generate QR')),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/report');
+                },
+                child: Text('Report'))
           ],
         ),
       ),
