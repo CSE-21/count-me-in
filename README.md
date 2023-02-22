@@ -24,7 +24,7 @@ Currently the app is in starting phase, so we would ❤️ if you are willing to
 ### Contributors👨‍🔧
 
 - Tushar Bansal ([@tusharbansal22](https://github.com/tusharbansal22))
-- Aditya Sankhla ([@adismort14](https://github.com/adismort14)
+- Aditya Sankhla ([@adismort14](https://github.com/adismort14))
 
 
 
