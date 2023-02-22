@@ -9,7 +9,7 @@ class RegistrationScreen extends StatefulWidget {
 }
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
-  var _username = "";
+  var _roll;
   var _password = "";
   var _email = "";
   @override
@@ -37,11 +37,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               padding: const EdgeInsets.all(10),
               child: TextField(
                 onChanged: (value) {
-                  _username = value;
+                  _roll = value;
                 },
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  labelText: 'Enter your first name',
+                  labelText: 'Enter your Roll Number',
                 ),
               ),
             ),
@@ -91,10 +91,23 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 child: const Text('Register'),
                 onPressed: () async {
                   try {
-                    await Supabase.instance.client.auth.signUp(
+                    var supabase = Supabase.instance.client;
+                    await supabase.auth.signUp(
                       email: _email,
                       password: _password,
                     );
+                    await supabase
+                        .from('Student Details')
+                        .insert({'Roll ID': _roll, 'Email ID': _email});
+
+                    // Supabase.instance.client.auth.onAuthStateChange
+                    //     .listen((event) {
+                    //   if (event == AuthState.authenticated) {
+                    //     final uuid = Supabase.instance.client.auth.user!.id;
+                    //     print('User UUID: $uuid');
+                    //   }
+                    // });
+                    // print(response.data);
                     Navigator.pushNamed(context, "/home");
                   } catch (e) {
                     print(e);

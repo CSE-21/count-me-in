@@ -59,6 +59,26 @@ class _LogRegisterState extends State<LogRegister> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: 220,
+              height: 60,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/instruct_login");
+                },
+                child: Text("Instructor login"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.pinkAccent,
+                  textStyle: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20),
+                ),
+              ),
+            ),
           ],
         ),
       ),

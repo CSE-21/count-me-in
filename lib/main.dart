@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'screens/home.dart';
+import 'screens/instruct_login.dart';
 import 'screens/logReg.dart';
 import 'screens/login.dart';
 import 'screens/qrscan.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         '/profPanel': (context) => ProfPanel(),
         '/success': (context) => Success(),
         '/failure': (context) => Failure(),
+        '/instruct_login': (context) => InstLogin(),
       },
       title: '',
       theme: ThemeData(

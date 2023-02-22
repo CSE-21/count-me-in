@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
 class ProfPanel extends StatefulWidget {
   const ProfPanel({Key? key}) : super(key: key);
 
@@ -11,38 +12,42 @@ class ProfPanel extends StatefulWidget {
 }
 
 class _ProfPanelState extends State<ProfPanel> {
-  static const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+  static const _chars =
+      'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
 
   Random _rnd = Random();
   String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
       length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
   final supabase = Supabase.instance.client;
   @override
-  Future<String> _generate() async{
+  Future<String> _generate() async {
     String code = getRandomString(10);
-    await supabase .from('QR code') .update({'code': code}) .match({'id':1});
+    await supabase.from('QR code').update({'code': code}).match({'id': 1});
     print(code);
     return code;
   }
-  void _regenerate(){
+
+  void _regenerate() {
     setState(() {
       String code = getRandomString(10);
     });
   }
 
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: Column(
-        children: [
-          ElevatedButton(
-            onPressed: (){
-          _regenerate();
-        },
-              child: Text('Generate QR')),
-          FutureBuilder<String>(
-            future: _generate(), // a previously-obtained Future<String> or null
-            builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-              List<Widget> children;
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Count Me In"),
+        centerTitle: true,
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            SizedBox(height: 150),
+            FutureBuilder<String>(
+              future:
+                  _generate(), // a previously-obtained Future<String> or null
+              builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                List<Widget> children;
                 if (snapshot.hasData) {
                   children = <Widget>[
                     QrImage(
@@ -77,16 +82,22 @@ class _ProfPanelState extends State<ProfPanel> {
                   ];
                 }
 
-              return Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: children,
-                ),
-              );
-            },
-          ),
-        ],
-
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: children,
+                  ),
+                );
+              },
+            ),
+            SizedBox(height: 50),
+            ElevatedButton(
+                onPressed: () {
+                  _regenerate();
+                },
+                child: Text('Generate QR')),
+          ],
+        ),
       ),
     );
   }
