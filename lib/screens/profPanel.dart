@@ -85,6 +85,7 @@ class _ProfPanelState extends State<ProfPanel> {
               );
             },
           ),
+          ElevatedButton(onPressed:(){ Navigator.pushNamed(context, '/report');}, child: Text('Report'))
         ],
 
       ),

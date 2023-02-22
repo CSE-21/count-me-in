@@ -1,9 +1,9 @@
 import 'package:count_me_in/screens/profPanel.dart';
+import 'package:count_me_in/screens/report.dart';
 import 'package:count_me_in/screens/status/failure.dart';
 import 'package:count_me_in/screens/status/success.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
 import 'screens/home.dart';
 import 'screens/logReg.dart';
 import 'screens/login.dart';
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/logReg',
+      initialRoute: '/profPanel',
       routes: {
         '/logReg': (context) => LogRegister(),
         '/login': (context) => LoginScreen(),
@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
         '/profPanel': (context) => ProfPanel(),
         '/success': (context) => Success(),
         '/failure': (context) => Failure(),
+        '/report': (context) => Report()
       },
       title: '',
       theme: ThemeData(
